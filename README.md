@@ -42,7 +42,7 @@ Contains C++ labs and assignments focusing on OOP principles.
 - Polymorphism
 - File Handling
 
-📁 `OOP/`
+📁 `OOP/` [Object-Oriented Programming (OOP)](./OOP)
 
 ---
 
