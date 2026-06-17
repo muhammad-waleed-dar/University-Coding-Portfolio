@@ -29,7 +29,7 @@ Contains C programming labs, assignments, quizzes, and practice exercises.
 - Arrays
 - Problem-solving tasks
 
-📁 `PF/`
+📁 `PF/` [Programming Fundamentals (PF)](./PF)
 
 ---
 
