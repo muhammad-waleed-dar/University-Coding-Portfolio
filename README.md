@@ -2,7 +2,7 @@
 
 A structured collection of my academic programming work completed during my Bachelor of Science in Information Technology (BSIT) at the University of the Punjab (PUCIT).
 
-This repository includes assignments, lab tasks, and programming exercises from multiple core computer science subjects.
+This repository includes assignments, lab tasks, and programming exercises from multiple core computer science programming subjects in C and C++. 
 
 ---
 
@@ -29,6 +29,12 @@ Contains C programming labs, assignments, quizzes, and practice exercises.
 - Arrays
 - Problem-solving tasks
 
+## Summary
+- Assignments (01–02)
+- Labs (03–10)
+- Quiz materials
+
+
 📁 `PF/` [Programming Fundamentals (PF)](./PF)
 
 ---
@@ -46,7 +52,7 @@ Contains C++ labs and assignments focusing on OOP principles.
 
 ---
 
-### 📊 Data Structures & Algorithms (Coming Soon)
+### 📊 Data Structures & Algorithms
 This section will include implementations of core DSA concepts such as:
 
 - Arrays & Linked Lists
