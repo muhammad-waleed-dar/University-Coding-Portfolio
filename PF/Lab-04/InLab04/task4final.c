@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void convertToRoman(int num) {
+    if (num < 1 || num > 3999) {
+        printf("Please enter a number between 1 and 3999.\n");
+        return;
+    }
+
+    printf("Roman numeral: ");
+
+    while (num >= 1000) { printf("M"); num -= 1000; }
+    while (num >= 900) { printf("CM"); num -= 900; }
+    while (num >= 500) { printf("D"); num -= 500; }
+    while (num >= 400) { printf("CD"); num -= 400; }
+    while (num >= 100) { printf("C"); num -= 100; }
+    while (num >= 90) { printf("XC"); num -= 90; }
+    while (num >= 50) { printf("L"); num -= 50; }
+    while (num >= 40) { printf("XL"); num -= 40; }
+    while (num >= 10) { printf("X"); num -= 10; }
+    while (num >= 9) { printf("IX"); num -= 9; }
+    while (num >= 5) { printf("V"); num -= 5; }
+    while (num >= 4) { printf("IV"); num -= 4; }
+    while (num >= 1) { printf("I"); num -= 1; }
+
+    printf("\n");
+}
+
+int main() {
+    int number;
+    printf("Enter a number (1-3999): ");
+    scanf("%d", &number);
+    convertToRoman(number);
+    return 0;
+}
