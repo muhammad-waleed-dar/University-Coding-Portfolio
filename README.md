@@ -60,7 +60,7 @@ This section will include implementations of core DSA concepts such as:
 - Trees & Graphs
 - Sorting & Searching Algorithms
 
-📁 `DSA/`
+📁 `DSA/` [Data Structures & Algorithms (DSA)](./DSA)
 
 ---
 
