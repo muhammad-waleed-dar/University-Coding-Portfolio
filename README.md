@@ -12,7 +12,7 @@ I am a BSIT student with a strong interest in:
 - Software Development
 - Object-Oriented Programming
 - Problem Solving
-- Data Structures & Algorithms (upcoming focus)
+- Data Structures & Algorithms
 
 I enjoy building logical solutions and continuously improving my programming skills through academic and personal projects.
 
