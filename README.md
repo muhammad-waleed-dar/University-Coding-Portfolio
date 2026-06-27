@@ -59,7 +59,7 @@ This section will include implementations of core DSA concepts such as:
 
 - Arrays & Linked Lists (Singly, doubly, circular)
 - Stacks & Queues
-- Trees (General trees, binary trees, BST, AVL trees) & Graphs (Adjacency Matrix, Adjacency List, Traversals: BFS, DFS)
+- Trees (General trees, binary trees, BST, AVL trees) & Graphs (Operations/Functions of grpahs,   Representations: Linked, Adjacency Matrix,List  ,  Graph Traversals: BFS,DFS)
 - Binary heaps
 - Hash functions
 - Sorting & Searching Algorithms
