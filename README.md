@@ -55,9 +55,10 @@ Contains C++ labs and assignments focusing on OOP principles.
 ### 📊 Data Structures & Algorithms
 This section will include implementations of core DSA concepts such as:
 
-- Arrays & Linked Lists
+- Arrays & Linked Lists (Singly, doubly, circular)
 - Stacks & Queues
-- Trees & Graphs
+- Trees (General trees, binary trees, BST, AVL trees) & Graphs (Adjacency Matrix, Adjacency List, Traversals: BFS, DFS)
+- Hash functions
 - Sorting & Searching Algorithms
 
 📁 `DSA/` [Data Structures & Algorithms (DSA)](./DSA)
