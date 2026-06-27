@@ -47,6 +47,8 @@ Contains C++ labs and assignments focusing on OOP principles.
 - Inheritance
 - Polymorphism
 - File Handling
+- Exception handling
+- STL
 
 📁 `OOP/` [Object-Oriented Programming (OOP)](./OOP)
 
@@ -58,6 +60,7 @@ This section will include implementations of core DSA concepts such as:
 - Arrays & Linked Lists (Singly, doubly, circular)
 - Stacks & Queues
 - Trees (General trees, binary trees, BST, AVL trees) & Graphs (Adjacency Matrix, Adjacency List, Traversals: BFS, DFS)
+- Binary heaps
 - Hash functions
 - Sorting & Searching Algorithms
 
