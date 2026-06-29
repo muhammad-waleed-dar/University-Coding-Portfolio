@@ -1,183 +1,145 @@
-Here is a **clean, complete C++ solution** that fulfills **ALL lab requirements + bonus tasks**, written in proper **class-based style** and exactly following your instructions.
-
----
-
-# 🌳🔥 FULL C++ CODE (FINAL LAB SOLUTION)
-
-```cpp
 #include <iostream>
 using namespace std;
 
 class Node {
 public:
-    int value;
-    string color; // "black" or "white"
-    Node* left;
-    Node* right;
+    int    value;
+    string color;   // "black" or "white"
+    Node*  left;
+    Node*  right;
 
-    Node(int v, string c) {
-        value = v;
-        color = c;
-        left = right = nullptr;
-    }
+    Node(int v, string c) : value(v), color(c), left(nullptr), right(nullptr) {}
 };
 
 class BlackWhiteTree {
 private:
     Node* root;
 
-    // 🔁 INSERT HELPER
-    Node* insertHelper(Node* curr, int val, string preferredColor) {
-        if (!curr) return nullptr;
 
-        // CASE 1: Preferred = BLACK
-        if (preferredColor == "black") {
-            // go to black child if exists
-            if (curr->left && curr->left->color == "black") {
-                insertHelper(curr->left, val, preferredColor);
+    bool insertHelper(Node* curr, int val, string preferredColor) {
+        if (!curr) return false;
+        string altColor = (preferredColor == "black") ? "white" : "black";
+
+        if (curr->left  && curr->left->color  == preferredColor) {
+            if (insertHelper(curr->left,  val, preferredColor)) return true;
+        }
+        if (curr->right && curr->right->color == preferredColor) {
+            if (insertHelper(curr->right, val, preferredColor)) return true;
+        }
+        
+        if (!curr->left) {
+            // The right child's color (if it exists) must differ from ours.
+            if (!curr->right || curr->right->color != preferredColor) {
+                curr->left = new Node(val, preferredColor);
+                return true;
             }
-            else if (curr->right && curr->right->color == "black") {
-                insertHelper(curr->right, val, preferredColor);
-            }
-            // insert if space available
-            else if (!curr->left) {
-                curr->left = new Node(val, "black");
-            }
-            else if (!curr->right) {
-                curr->right = new Node(val, "black");
-            }
-            // fallback: try alternate path
-            else {
-                insertHelper(curr->left, val, preferredColor);
+        }
+        if (!curr->right) {
+            if (!curr->left || curr->left->color != preferredColor) {
+                curr->right = new Node(val, preferredColor);
+                return true;
             }
         }
 
-        // CASE 2: Preferred = WHITE
-        else {
-            if (curr->left && curr->left->color == "white") {
-                insertHelper(curr->left, val, preferredColor);
+        if (curr->left  && curr->left->color  == altColor) {
+            if (insertHelper(curr->left,  val, altColor)) return true;
+        }
+        if (curr->right && curr->right->color == altColor) {
+            if (insertHelper(curr->right, val, altColor)) return true;
+        }
+
+        if (!curr->left) {
+            if (!curr->right || curr->right->color != altColor) {
+                curr->left = new Node(val, altColor);
+                return true;
             }
-            else if (curr->right && curr->right->color == "white") {
-                insertHelper(curr->right, val, preferredColor);
-            }
-            else if (!curr->left) {
-                curr->left = new Node(val, "white");
-            }
-            else if (!curr->right) {
-                curr->right = new Node(val, "white");
-            }
-            else {
-                insertHelper(curr->right, val, preferredColor);
+        }
+        if (!curr->right) {
+            if (!curr->left || curr->left->color != altColor) {
+                curr->right = new Node(val, altColor);
+                return true;
             }
         }
 
-        return curr;
+        if (insertHelper(curr->left,  val, preferredColor)) return true;
+        if (insertHelper(curr->right, val, preferredColor)) return true;
+
+        return false; 
     }
 
-    // 🌳 DISPLAY HELPER
     void displayHelper(Node* curr, int space) {
         if (!curr) return;
 
         space += 5;
-
         displayHelper(curr->right, space);
 
-        cout << endl;
-        for (int i = 5; i < space; i++)
-            cout << " ";
-
-        cout << curr->value << "(" << curr->color << ")" << endl;
+        cout << "\n";
+        for (int i = 5; i < space; i++) cout << " ";
+        cout << curr->value << "(" << curr->color[0] << ")\n"; 
 
         displayHelper(curr->left, space);
     }
 
-    // 🔍 SEARCH HELPER
     bool searchHelper(Node* curr, int val) {
-        if (!curr) return false;
-
-        if (curr->value == val)
-            return true;
-
-        return searchHelper(curr->left, val) ||
-               searchHelper(curr->right, val);
+        if (!curr)            return false;
+        if (curr->value == val) return true;
+        return searchHelper(curr->left, val) || searchHelper(curr->right, val);
     }
 
-    // 🔢 COUNT COLORS
-    void countHelper(Node* curr, int &black, int &white) {
+    void countHelper(Node* curr, int& black, int& white) {
         if (!curr) return;
-
         if (curr->color == "black") black++;
-        else white++;
-
-        countHelper(curr->left, black, white);
+        else                        white++;
+        countHelper(curr->left,  black, white);
         countHelper(curr->right, black, white);
     }
 
-    // ✅ VALIDATE RULE
     bool validateHelper(Node* curr) {
         if (!curr) return true;
 
-        if (curr->left && curr->right) {
+        if (curr->left && curr->right)
             if (curr->left->color == curr->right->color)
                 return false;
-        }
 
-        return validateHelper(curr->left) &&
-               validateHelper(curr->right);
+        return validateHelper(curr->left) && validateHelper(curr->right);
     }
 
 public:
-    // CONSTRUCTOR
-    BlackWhiteTree() {
-        root = nullptr;
-    }
+    BlackWhiteTree() : root(nullptr) {}
 
-    // 🌳 INSERT FUNCTION
     void insert(int val, string preferredColor) {
         if (!root) {
-            // root must always be black
-            root = new Node(val, "black");
+            root = new Node(val, "black");   // root is always black
             return;
         }
-
         insertHelper(root, val, preferredColor);
     }
 
-    // 🌳 DISPLAY
     void display() {
-        cout << "\nTree Structure:\n";
+        cout << "\nTree Structure (rotated: right is up, left is down):\n";
         displayHelper(root, 0);
+        cout << "\n";
     }
 
-    // 🔍 SEARCH
     bool search(int val) {
         return searchHelper(root, val);
     }
 
-    // 🔢 COUNT COLORS
     void countColors() {
         int black = 0, white = 0;
         countHelper(root, black, white);
-
-        cout << "\nBlack nodes: " << black << endl;
-        cout << "White nodes: " << white << endl;
+        cout << "\nBlack nodes : " << black
+             << "\nWhite nodes : " << white << "\n";
     }
 
-    // ✅ VALIDATE TREE RULE
     void validate() {
         if (validateHelper(root))
-            cout << "\nTree is VALID\n";
+            cout << "\nTree is VALID (no same-color sibling pair)\n";
         else
-            cout << "\nTree is INVALID (same color children found)\n";
+            cout << "\nTree is INVALID (same-color children found!)\n";
     }
 };
-```
 
----
-
-# 🚀 MAIN FUNCTION (TEST CASE)
-
-```cpp
 int main() {
     BlackWhiteTree t;
 
@@ -190,86 +152,11 @@ int main() {
 
     t.display();
 
-    cout << "\nSearch 30: ";
-    cout << (t.search(30) ? "Found\n" : "Not Found\n");
+    cout << "Search 30 : " << (t.search(30) ? "Found"     : "Not Found") << "\n";
+    cout << "Search 99 : " << (t.search(99) ? "Found"     : "Not Found") << "\n";
 
     t.countColors();
-
     t.validate();
 
     return 0;
 }
-```
-
----
-
-# 🧠 IMPORTANT LAB POINTS (REMEMBER)
-
-### ✔ NOT BST
-
-```text
-No value comparison (no < or >)
-```
-
----
-
-### ✔ INSERT BASED ON COLOR
-
-```text
-black → follow black path
-white → follow white path
-```
-
----
-
-### ✔ TREE RULE
-
-```text
-No node can have two children of same color
-```
-
----
-
-### ✔ ROOT RULE
-
-```text
-Root is always BLACK
-```
-
----
-
-# 💥 WHAT EXAMINER EXPECTS
-
-If asked:
-
-👉 “Explain insertion”
-
-Say:
-
-```text
-Insertion is guided by preferred color.
-We traverse recursively and insert where valid position is found,
-while respecting color constraints.
-```
-
----
-
-# 🚀 YOU ARE READY
-
-This code covers:
-
-✔ Core requirement
-✔ Display
-✔ Search
-✔ Count
-✔ Validation
-✔ Proper recursion
-
----
-
-If you want next:
-
-👉 I can do **step-by-step dry run of THIS insertion (very important)**
-👉 OR **predict exact tricky variations your sir may give**
-
-Just say 👍
