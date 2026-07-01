@@ -14,7 +14,7 @@ I am a BSIT student with a strong interest in:
 - Problem Solving
 - Data Structures & Algorithms
 
-I enjoy building logical solutions and continuously improving my programming skills through academic and personal projects.
+I enjoy building logical solutions and continuously improving my programming skills :)
 
 ---
 
@@ -76,21 +76,6 @@ This section will include implementations of core DSA concepts such as:
 - To demonstrate consistent coding practice over time
 
 ---
-
-## 🛠️ Technologies Used
-
-- C Language
-- C++
-- Git & GitHub
-
----
-
-## 📌 Note
-
-This repository contains academic work and is continuously updated as I progress through my degree.
-
----
-
 ## 📫 Contact
 
 - GitHub: [muhammad-waleed-dar](https://github.com/muhammad-waleed-dar)
